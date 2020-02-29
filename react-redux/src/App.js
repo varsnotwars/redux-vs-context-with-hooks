@@ -1,5 +1,12 @@
 import React from "react";
+import Counter from "./Counter";
+import Count from "./Count";
 
-const App = () => <div className="App">hello world</div>;
+const App = () => (
+  <div>
+    <Count />
+    <Counter />
+  </div>
+);
 
 export default App;
