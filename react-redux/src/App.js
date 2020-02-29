@@ -11,7 +11,7 @@ const App = () => (
     justify="center"
     alignItems="center"
   >
-    <Grid item xs="4">
+    <Grid item xs={4}>
       <Count />
       <Counter />
     </Grid>
