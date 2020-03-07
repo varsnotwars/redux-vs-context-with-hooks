@@ -1,5 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "./global";
 
-const App = () => <div className="App">hello world</div>;
+const App = () => {
+  const { greeting } = useContext(GlobalContext);
+
+  return <div className="App">{greeting}</div>;
+};
 
 export default App;
