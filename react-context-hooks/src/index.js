@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-
-import { GlobalContext } from "./global";
-const { Provider } = GlobalContext;
+import { Provider } from "./store/createStore";
 
 ReactDOM.render(
-  <Provider value={{ greeting: "hello world" }}>
+  <Provider>
     <App />
   </Provider>,
   document.getElementById("root")
