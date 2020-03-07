@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { GlobalContext } from "./global";
 
 const App = () => {
-  const { greeting } = useContext(GlobalContext);
+  const { greeting, isProviderInTree } = useContext(GlobalContext);
 
-  return <div className="App">{greeting}</div>;
+  return <div className="App">{isProviderInTree || greeting}</div>;
 };
 
 export default App;
