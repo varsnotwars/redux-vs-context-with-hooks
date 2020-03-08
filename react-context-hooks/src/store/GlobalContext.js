@@ -1,13 +1,13 @@
 import React, { createContext, useReducer } from "react";
 
 import { actionCreators } from "../actions";
-import { reducers } from "../reducers";
-const { counterReducer } = reducers;
+import { rootReducer } from "../reducers";
+
 export const createGlobalStore = initialState => {
   const GlobalContext = createContext();
 
   const Provider = ({ children }) => {
-    const [state, dispatch] = useReducer(counterReducer, initialState);
+    const [state, dispatch] = useReducer(rootReducer, initialState);
 
     const boundActionCreators = Object
       // prettier-ignore
