@@ -2,25 +2,11 @@ import React, { createContext, useReducer } from "react";
 
 import { actionCreators } from "../actions";
 
-import { counterReducer } from "../reducers/counterReducer";
-import { unrelatedReducer } from "../reducers/unrelatedReducer";
-import { combineReducers } from "../store/combineReducers";
-
-const reducerMap = {
-  counter: counterReducer,
-  unrelated: unrelatedReducer
-};
-
-const rootReducer = combineReducers(reducerMap);
-const initialState = Object.keys(reducerMap).reduce((acc, cur) => {
-  return { ...acc, [cur]: reducerMap[cur]() };
-}, {});
-
-export const createGlobalStore = () => {
+export const createGlobalStore = (reducer, initialState) => {
   const GlobalContext = createContext();
 
   const Provider = ({ children }) => {
-    const [state, dispatch] = useReducer(rootReducer, { ...initialState });
+    const [state, dispatch] = useReducer(reducer, { ...initialState });
 
     const boundActionCreators = Object
       // prettier-ignore
