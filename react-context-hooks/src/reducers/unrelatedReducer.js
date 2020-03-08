@@ -3,7 +3,10 @@ import {
   DEACTIVATE_UNRELATED
 } from "../actions/actionTypes";
 
-export const unrelatedReducer = (state, action) => {
+export const unrelatedReducer = (
+  state = { active: false },
+  action = { type: null }
+) => {
   switch (action.type) {
     case ACTIVATE_UNRELATED:
       return { ...state, active: true };

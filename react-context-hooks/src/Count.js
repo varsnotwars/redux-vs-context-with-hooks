@@ -4,7 +4,9 @@ import { GlobalContext } from "./store/createStore";
 
 export const Count = () => {
   const {
-    state: { count }
+    state: {
+      counter: { count }
+    }
   } = useContext(GlobalContext);
 
   return (

@@ -3,9 +3,18 @@ export const combineReducers = reducerMap => (state, action) =>
     // prettier-ignore
     .keys(reducerMap)
     .reduce(
-      (newState, reducer) => {
-        const reducerState = reducerMap[reducer](state, action);
-        return { ...newState, ...reducerState };
+      (globalState, reducer) => {
+        const reducerSandboxState = state[reducer];
+
+        const newSandboxState = reducerMap[reducer](
+          reducerSandboxState,
+          action
+        );
+
+        return {
+          ...globalState,
+          [reducer]: newSandboxState
+        };
       },
       { ...state }
     );
