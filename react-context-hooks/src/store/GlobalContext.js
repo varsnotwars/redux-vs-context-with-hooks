@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-
+import { mapDispatchToActions } from "././mapDispatchToActions";
 import { actionCreators } from "../actions";
 
 export const createGlobalStore = (reducer, initialState) => {
@@ -8,16 +8,7 @@ export const createGlobalStore = (reducer, initialState) => {
   const Provider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, { ...initialState });
 
-    const boundActionCreators = Object
-      // prettier-ignore
-      .keys(actionCreators)
-      .reduce(
-        (map, acName) => ({
-          ...map,
-          [acName]: actionCreators[acName](dispatch)
-        }),
-        {}
-      );
+    const boundActionCreators = mapDispatchToActions(dispatch, actionCreators);
 
     return (
       <GlobalContext.Provider value={{ state, ...boundActionCreators }}>
