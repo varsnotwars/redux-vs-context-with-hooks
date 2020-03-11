@@ -2,7 +2,8 @@ export const createInitialState = reducerMap =>
   Object.keys(reducerMap).reduce(
     (globalState, reducerName) => ({
       ...globalState,
-      // calling reducer with no args will init with default values
+      // call reducer with no args
+      // this will create sandboxed state for each reducer with initial state defined in resolver
       [reducerName]: reducerMap[reducerName]()
     }),
     {}
