@@ -1,4 +1,9 @@
 export const createInitialState = reducerMap =>
-  Object.keys(reducerMap).reduce((acc, cur) => {
-    return { ...acc, [cur]: reducerMap[cur]() };
-  }, {});
+  Object.keys(reducerMap).reduce(
+    (globalState, reducerName) => ({
+      ...globalState,
+      // calling reducer with no args will init with default values
+      [reducerName]: reducerMap[reducerName]()
+    }),
+    {}
+  );
