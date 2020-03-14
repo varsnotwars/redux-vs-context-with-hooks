@@ -3,6 +3,8 @@ import { Grid } from "@material-ui/core";
 
 import { Count } from "./Count";
 import { Counter } from "./Counter";
+import { Status } from "./Status";
+import { StatusToggler } from "./StatusToggler";
 
 const App = () => (
   <Grid
@@ -12,6 +14,8 @@ const App = () => (
     alignItems="center"
   >
     <Grid item xs={4}>
+      <Status />
+      <StatusToggler />
       <Count />
       <Counter />
     </Grid>
