@@ -1,17 +1,12 @@
-import {
-  ACTIVATE_UNRELATED,
-  DEACTIVATE_UNRELATED
-} from "../actions/actionTypes";
+import { TOGGLE_STATUS } from "../actions/actionTypes";
 
 export const unrelatedReducer = (
   state = { active: false },
   action = { type: null }
 ) => {
   switch (action.type) {
-    case ACTIVATE_UNRELATED:
-      return { ...state, active: true };
-    case DEACTIVATE_UNRELATED:
-      return { ...state, active: false };
+    case TOGGLE_STATUS:
+      return { ...state, active: action.payload };
     default:
       return state;
   }

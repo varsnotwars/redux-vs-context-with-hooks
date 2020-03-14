@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
-import { Button, ButtonGroup } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 import { GlobalContext } from "./store/createStore";
 
 export const StatusToggler = () => {
-  const { activateUnrelated, deactivateUnrelated } = useContext(GlobalContext);
+  const {
+    toggleStatus,
+    state: {
+      statusToggler: { active }
+    }
+  } = useContext(GlobalContext);
+
   return (
     <div
       style={{
@@ -13,22 +19,13 @@ export const StatusToggler = () => {
         alignItems: "center"
       }}
     >
-      <ButtonGroup>
-        <Button
-          variant="contained"
-          color="default"
-          onClick={() => deactivateUnrelated()}
-        >
-          Deactivate
-        </Button>
-        <Button
-          variant="contained"
-          color="default"
-          onClick={() => activateUnrelated()}
-        >
-          Activate
-        </Button>
-      </ButtonGroup>
+      <Button
+        variant="contained"
+        color="default"
+        onClick={() => toggleStatus(!active)}
+      >
+        {!active ? "Activate" : "Deactivate"}
+      </Button>
     </div>
   );
 };
