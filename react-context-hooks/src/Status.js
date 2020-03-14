@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Card } from "@material-ui/core";
+import { Alert, AlertTitle } from "@material-ui/lab";
 import { GlobalContext } from "./store/createStore";
 
 export const Status = () => {
@@ -9,9 +9,23 @@ export const Status = () => {
     }
   } = useContext(GlobalContext);
 
+  const { title, severity, content } = {
+    active: {
+      title: "Active",
+      severity: "success",
+      content: "Status successfully activated"
+    },
+    inactive: {
+      title: "Inactive",
+      severity: "error",
+      content: "Status successfully deactivated"
+    }
+  }[active ? "active" : "inactive"];
+
   return (
-    <Card style={{ textAlign: "center" }}>
-      <h2>{active ? "active" : "inactive"}</h2>
-    </Card>
+    <Alert severity={severity}>
+      <AlertTitle>{title}</AlertTitle>
+      {content}
+    </Alert>
   );
 };
