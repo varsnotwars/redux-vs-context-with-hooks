@@ -1,6 +1,6 @@
 import { TOGGLE_STATUS } from "../actions/actionTypes";
 
-export const unrelatedReducer = (
+export const statusTogglerReducer = (
   state = { active: false },
   action = { type: null }
 ) => {

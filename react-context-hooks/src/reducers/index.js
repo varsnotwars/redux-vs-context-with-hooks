@@ -1,7 +1,7 @@
 import { counterReducer } from "../reducers/counterReducer";
-import { unrelatedReducer } from "../reducers/unrelatedReducer";
+import { statusTogglerReducer } from "../reducers/statusTogglerReducer";
 
 export const reducerMap = {
   counter: counterReducer,
-  statusToggler: unrelatedReducer
+  statusToggler: statusTogglerReducer
 };
